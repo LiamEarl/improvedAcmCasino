@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="blackjack.css"/>
+</head>
+<body>
+    <h1 id="noCoins"></h1>
+    <div class = "header">
+        <h1>Blackjack</h1>
+        <p id="credits">💰 LiamCoins: 0</p>
+    </div>
+    <div class="hands">
+        <div class="hand">
+            <h2>House Hand</h2>
+            <div id="house-cards" class="cards"></div>
+            <p id="house-points">House Points: 0</p>
+        </div>
+        <div class="hand">
+            <h2>Your Hand</h2>
+            <div id="player-cards" class="cards"></div>
+            <p id="player-points">Your Points: 0</p>
+        </div>
+    </div>
+    <div class="buttons">
+        <button id="hit">Hit Me</button>
+        <button id="hold">Hold</button>
+    
+        <a id="back" href="../../homepage/index.html">
+            <button>← Casino</button>
+        </a>
+        <button id="new-game">New Game</button>
+    </div>
+    <h2 id="status"></h2>
+    <script src="blackjack.js"></script>
+</body>
+</html>

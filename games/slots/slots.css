@@ -1,0 +1,50 @@
+body {
+    background-image: url('../../assets/games-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    color: gold;
+}
+#reels {
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 20px 0;
+}
+#result {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+input[type="number"] {
+    width: 100px;
+    padding: 8px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background-color: #2b2b2b;
+    color: #fff;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: #00ff99;
+}
+button {
+    background-color: gold;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 1em;
+}

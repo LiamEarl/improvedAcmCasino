@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Machine</title>
+  <link rel="stylesheet" href="slots.css"/>
+</head>
+<body>
+  <h1>🎰 Slot Machine</h1>
+
+  <div id="welcomeScreen">
+    <p>Welcome to the LiamCoin Casino!</p>
+    <p>Spin the reels for a chance to win big!</p>
+    <button id="startButton">Start Game</button>
+  </div>
+
+  <div id="gameArea" style="display: none;">
+    <p id="credits">💰 LiamCoins: 200</p>
+    <div id="reels">
+      <span id="reel1">❓</span>
+      <span id="reel2">❓</span>
+      <span id="reel3">❓</span>
+    </div>
+    <p id="result">Click spin to play!</p>
+    <label for="betAmount">Bet Amount:</label>
+    <input type="number" id="betAmount" name="betAmount" min="1" max="100" step="1" value="10">
+    <button id="spinButton">Spin</button>
+  </div>
+  <button type="button" class="casino-btn blackjack-btn primary-action-btn" onclick="window.location.href='../../homepage/index.html'">Back to Casino</button>
+  <script src="slots.js" defer></script>
+
+  <audio id="startSound" src="../../assets/start.mp3" preload="auto"></audio>
+  <audio id="spinSound" src="../../assets/spin.mp3" preload="auto"></audio>
+  <audio id="pair1" src="../../assets/pair1.mp3" preload="auto"></audio>
+  <audio id="noPair" src="../../assets/noPair.mp3" preload="auto"></audio>
+  <audio id="jackpot" src="../../assets/jackpot.mp3" preload="auto"></audio>
+  <audio id="BrokeLiamCoins" src="../../assets/BrokeLiamCoins.mp3" preload="auto"></audio>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    background-image: url('../../assets/games-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.hand {
+    margin: 20px 0;
+}
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.card {
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 6px;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.buttons button {
+    border-radius: 10px;
+    background: #ffd700;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+}
+.buttons button :hover {
+    scale: 1.05;
+    cursor: pointer;
+    background: #5a5e35;
+}

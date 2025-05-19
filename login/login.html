@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casino Login</title>
+  <link rel="stylesheet" href="login.css"/>
+</head>
+<body>
+
+  <h1>Enter Your Info</h1>
+
+  <div class="form-container">
+    <form id="userForm">
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Submit</button>
+      <h2 id="statusMessage"></h2>
+    </form>
+    <button type="button" class="casino-btn blackjack-btn primary-action-btn" onclick="window.location.href='../games/games.html'">Play Now & Win BIG! </button>
+    <button class="home-button" onclick="window.location.href='../homepage/index.html'">Go to Home</button>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

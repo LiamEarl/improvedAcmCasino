@@ -6,7 +6,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
         email: document.getElementById("email").value
     };
 
-    fetch("http://10.104.160.95:8080/api/users", {
+    fetch("http://localhost:8080/api/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

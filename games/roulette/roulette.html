@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rouletee Game</title>
+    <link rel="stylesheet" href="roulette.css">
+</head>
+<body>
+    <h1>Roulette</h1>
+    <div class="img-container">
+        <img class="top" id = "peg" src="../../assets/peg.png" height= 50px length=100px>
+        <img id = "wheel" src = "../../assets/wheel.png" alt = "Image of a wheel" height = 400px width = 400px>
+    </div>
+    <div>
+        <button onclick = "roulette.start()">Start!</button>
+        <!--<button onclick = "roulette.debug()">Debug</button>-->
+        <button onclick = "roulette.color('b')">Black</button>
+        <button onclick = "roulette.color('r')">Red</button>
+        <button onclick = "roulette.color('g')">Green</button>
+    </div>
+    <a href="../../homepage/index.html">
+        <button style="background-color: lightblue; border-radius: 15px;">Back to Casino</button>
+    </a>
+    <button onClick="window.location.reload();" style="background-color: lightblue; border-radius: 15px;">Play Again?</button>
+    <h2 id="status"></h2>
+    <script src="roulette.js"></script>
+</body>
+</html>
