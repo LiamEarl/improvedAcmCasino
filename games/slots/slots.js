@@ -44,19 +44,19 @@ function checkResult(r1, r2, r3) {
   const result = document.getElementById("result");
 
   if (r1 === r2 && r2 === r3) {
-    var jackpot = new Audio("../assets/jackpot.mp3");
+    var jackpot = new Audio("../../assets/jackpot.mp3");
     jackpot.currentTime = 0;
     jackpot.play();
     result.textContent = "🎉 JACKPOT! You won ".concat((bet*5).toString()).concat(" LiamCoins!");
     liamCoins += bet * 6;
   } else if (r1 === r2 || r2 === r3 || r1 === r3) {
-    var pair1 = new Audio("../assets/pair1.mp3");
+    var pair1 = new Audio("../../assets/pair1.mp3");
     pair1.currentTime = 0;
     pair1.play();
     result.textContent = "😊 You got a pair! You won ".concat(bet.toString()).concat(" LiamCoins!");
     liamCoins += bet * 2;
   } else {
-    var noPair = new Audio("../assets/noPair.mp3");
+    var noPair = new Audio("../../assets/noPair.mp3");
     noPair.currentTime = 0;
     noPair.play();
     result.textContent = "🙁 No match. Better luck next time.";
@@ -68,10 +68,10 @@ function checkResult(r1, r2, r3) {
 function spin() {
   if(bet < 1) return;
 
-  var spinSound = new Audio("../assets/spin.mp3");
+  var spinSound = new Audio("../../assets/spin.mp3");
 
   if (liamCoins < bet) {
-    var BrokeLiamCoins = new Audio("../assets/BrokeLiamCoins.mp3");
+    var BrokeLiamCoins = new Audio("../../assets/BrokeLiamCoins.mp3");
     BrokeLiamCoins.currentTime = 0;
     BrokeLiamCoins.play();
     document.getElementById("result").textContent = "🚫 Not enough LiamCoins to spin!";
@@ -108,7 +108,7 @@ function spin() {
 
         if (index === 2) {
           checkResult(...finalSymbols);
-          spinButton.disabled = liamCoins < 10;
+          spinButton.disabled = liamCoins < bet;
         }
       }
     }, 50);
@@ -116,9 +116,6 @@ function spin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const startSound = document.getElementById("startSound");
-  const spinSound = document.getElementById("spinSound");
-  const pair1 = document.getElementById("pair1");
   const startButton = document.getElementById("startButton");
   const welcomeScreen = document.getElementById("welcomeScreen");
   const gameArea = document.getElementById("gameArea");
@@ -135,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById('betAmount').addEventListener('input', function () {
     bet = parseInt(this.value, 10);
+    spinButton.disabled = liamCoins < bet;
   });
   document.getElementById("spinButton").addEventListener("click", spin);
 });

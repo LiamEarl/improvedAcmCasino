@@ -1,0 +1,79 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url('../assets/games-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    color: #f0f0f0; 
+}
+.leaderboard-item {
+    transition: all 0.3s ease-in-out;
+    background-color: #ffffff; 
+    color: #333; 
+}
+.leaderboard-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.rank-badge {
+    min-width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 50%; 
+}
+.rank-1 { background-color: #ffd700; color: #4a3b00; } 
+.rank-2 { background-color: #c0c0c0; color: #3e3e3e; } 
+.rank-3 { background-color: #cd7f32; color: #5d3a1a; } 
+.rank-other { background-color: #60a5fa; color: white; }
+
+#message-box {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 0.9rem;
+}
+#message-box.success {
+    background-color: #28a745; 
+    color: white;
+}
+#message-box.error {
+    background-color: #dc3545; 
+    color: white;
+}
+#message-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+.button-group button, .button-group a {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.main-content-card {
+    background-color: rgba(255, 255, 255, 0.95); 
+    color: #333; 
+}
+.ad-card {
+    background-color: rgba(31, 41, 55, 0.9); 
+    border-color: #f59e0b; 
+}
+.conversion-rate-box {
+    background-color: #3b82f6; 
+    color: white;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

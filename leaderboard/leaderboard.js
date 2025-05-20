@@ -1,15 +1,16 @@
 const leaderboardDiv = document.getElementById('leaderboard');
 const messageBox = document.getElementById('message-box');
 const refreshButton = document.getElementById('refreshButton');
+
 let messageTimeout;
-let currentLocalUser = null; // Stores { username: "name_from_localstorage", liamCoins: 123 }
-let lastFetchedLeaderboardData = []; // Stores the last successfully fetched array from API
+let currentLocalUser = null; 
+let lastFetchedLeaderboardData = []; 
 
 // Function to show a message (success or error)
 function showMessage(message, type = 'success') {
     messageBox.textContent = message;
-    messageBox.className = ''; // Clear existing type classes
-    messageBox.classList.add(type); // 'success' or 'error'
+    messageBox.className = '';
+    messageBox.classList.add(type); 
     messageBox.classList.add('show');
 
     if (messageTimeout) {
@@ -27,15 +28,13 @@ function loadLocalUserData() {
     if (userString) {
         try {
             const parsedUser = JSON.parse(userString);
-            // Expecting 'username' (for local identification) and 'liamCoins' in localStorage
             if (parsedUser && typeof parsedUser.username === 'string' && parsedUser.liamCoins !== undefined) {
                 const coins = parseInt(parsedUser.liamCoins, 10);
                 if (!isNaN(coins)) {
                     currentLocalUser = {
-                        username: parsedUser.username, // This is the current browser user's display name
+                        username: parsedUser.username, 
                         liamCoins: coins
                     };
-                    // console.log("Local user data loaded for leaderboard:", currentLocalUser);
                 } else {
                     console.warn("Parsed liamCoins from localStorage is NaN for local user.");
                 }
@@ -48,32 +47,23 @@ function loadLocalUserData() {
     }
 }
 
-/**
- * Updates the leaderboard display.
- * @param {Array<Object>} usersArrayFromServer - An array of user objects from the API.
- * Each object from API is expected to have 'name' (for display) and 'liamCoins'.
- */
 function updateLeaderboard(usersArrayFromServer) {
     if (!leaderboardDiv) {
         console.error("Leaderboard DIV not found!");
         return;
     }
-    leaderboardDiv.innerHTML = ''; // Clear previous entries
+    leaderboardDiv.innerHTML = ''; 
 
-    // Create a mutable shallow copy of the user objects from the server
     let displayArray = usersArrayFromServer.map(u => ({ ...u }));
 
     if (currentLocalUser) {
-        // API provides 'name', local user has 'username'. We match these.
         const localUserIndex = displayArray.findIndex(u => u.name === currentLocalUser.username);
         if (localUserIndex > -1) {
             displayArray[localUserIndex].liamCoins = currentLocalUser.liamCoins;
         } else {
-            // Add local user if not in the fetched list, using 'name' for consistency in displayArray structure
             displayArray.push({
-                name: currentLocalUser.username, // This will be used for display
+                name: currentLocalUser.username, 
                 liamCoins: currentLocalUser.liamCoins
-                // id: "local_user" // Optional: for debugging or specific styling
             });
         }
     }
@@ -112,7 +102,7 @@ function updateLeaderboard(usersArrayFromServer) {
 async function fetchLeaderboard() {
     const apiURL = 'http://localhost:8080/api/users';
     if (leaderboardDiv) {
-            leaderboardDiv.innerHTML = '<p class="text-center text-gray-500">🔄 Refreshing leaderboard...</p>';
+        leaderboardDiv.innerHTML = '<p class="text-center text-gray-500">🔄 Refreshing leaderboard...</p>';
     }
     if (refreshButton) {
         refreshButton.disabled = true;
@@ -141,18 +131,6 @@ async function fetchLeaderboard() {
         }
     }
 }
-
-// Listen for localStorage changes from other tabs
-window.addEventListener('storage', (event) => {
-    if (event.key === 'user' && event.newValue) {
-        const oldCoins = currentLocalUser ? currentLocalUser.liamCoins : null;
-        loadLocalUserData(); // Reload local user data
-
-        if (currentLocalUser && (oldCoins === null || currentLocalUser.liamCoins !== oldCoins)) {
-            updateLeaderboard(lastFetchedLeaderboardData); // Re-render with stored full list
-        }
-    }
-});
 
 // Event listener for the refresh button
 if (refreshButton) {
